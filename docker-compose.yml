@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=${SUBDOMAIN}.${DOMAIN}
+      - N8N_PORT=5678
+      - VUE_APP_URL_BASE_API=https://${SUBDOMAIN}.${DOMAIN}/
+      - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN}/
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=zwingliganteng
+      - N8N_BASIC_AUTH_PASSWORD=zwingligantengbanget
+
+    volumes:
+      - ./data:/home/node/.n8n
